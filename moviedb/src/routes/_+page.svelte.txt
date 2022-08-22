@@ -17,16 +17,6 @@
 	})
 </script>
 
-<script>
-    let movie_data_promise = fetchMovieData();
-
-    movie_data_promise.then((value) => {
-        console.log(value?.props.popular);
-    });
-
-
-</script>
-
 {#await fetchMovieData()}
 	<p>...waiting</p>
 {:then data}
