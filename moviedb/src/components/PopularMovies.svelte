@@ -1,6 +1,6 @@
-<script>
-    export let movies;
-    console.log(movies[0]);
+<script lang="ts">
+    export let movies: any;
+    console.log(movies[0])
 </script>
 
 <h3>Popular Movies</h3>
