@@ -1,7 +1,13 @@
 /** @type {import('./$types').PageLoad} */
-export function load({ data }) {
+export async function load() {
+  const api_url = 'https://api.themoviedb.org/3/movie/popular?api_key=***REMOVED***&language=en-US&page=1'
+  const response = await fetch(api_url)
+  const data = await response.json()
+  if (response.ok) {
     return {
-      a: data.a, 
-      b: data.a * 2
+      popular: data.results
     };
+  } else {
+    throw new Error(data);
+  }
 }

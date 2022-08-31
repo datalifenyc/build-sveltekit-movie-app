@@ -2,6 +2,8 @@
     /** @type {import('./$types').PageData} */  
     export let data: any;
     
-    console.log(`a: ${data.a}`); // `undefined`, it wasn't passed through in +page.js
-    console.log(`b: ${data.b}`); // `2`
+    console.clear()
+    // console.log(`popular_movies: ${JSON.stringify(data.popular)}`);
+    console.log(`first_title: ${data.popular[0].title}`); 
+    console.log(data.popular);
 </script>
