@@ -16,8 +16,42 @@
 
 ```mermaid
 flowchart LR
-   page.server.js -- data --> page.js -- data --> page.svelte
+   +page.server.js -- data --> +page.js -- data --> +page.svelte
+```
 
+`+page.server.js`
+
+```javascript
+/** @type {import('./$types').PageServerLoad} */
+export function load() {
+  return {
+    a: 1
+  };
+}
+```
+
+`+page.js`
+
+```javascript
+/** @type {import('./$types').PageLoad} */
+export function load({ data }) {
+    return {
+      a: data.a, 
+      b: data.a * 2
+    };
+}
+```
+
+`+page.svelte`
+
+```html
+<script lang="ts">
+    /** @type {import('./$types').PageData} */  
+    export let data: any;
+    
+    console.log(`a: ${data.a}`); // `undefined`, it wasn't passed through in +page.js
+    console.log(`b: ${data.b}`); // `2`
+</script>
 ```
 
 ### Routing
