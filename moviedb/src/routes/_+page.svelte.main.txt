@@ -1,0 +1,65 @@
+<script context="module" lang="ts">
+    let current_time = new Date().toLocaleTimeString()
+	export const fetchMovieData = (async () => {
+        console.log(current_time)
+        const api_url = 'https://api.themoviedb.org/3/movie/popular?api_key=***REMOVED***&language=en-US&page=1'
+		const response = await fetch(api_url)
+        const data = await response.json()
+        // console.log(data);
+        console.log(response.ok)
+        if (response.ok) {
+            return {
+                props: {
+                    popular: data.results
+                }
+            };
+        }
+	})()
+</script>
+
+<script>
+    // export let popular
+    // console.log(popular)
+</script>
+
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+</style>
+
+{#await fetchMovieData}
+	<p>...waiting</p>
+{:then data}
+    <h1>{ current_time }</h1>
+    <h2>Popular Movies</h2>
+    <table>
+        <tr>
+            <th>Number</th>
+            <th>Movie Title</th>
+        </tr>
+        {#each data?.props.popular as {title}, i}
+        <tr>
+            <td>{i}</td>
+            <td>{JSON.stringify(data?.props.popular[i].original_title)}</td>
+        </tr>
+        {/each}
+    </table>
+{:catch error}
+	<p>An error occurred!</p>
+{/await}
+
+
+

@@ -6,11 +6,27 @@
 
 [SvelteKit](https://kit.svelte.dev/)
 
-## SvelteKit Documentation
+## Svelte/Kit Documentation
+
+[The migration for the infamous SvelteKit breaking changes everyone asks me about](https://github.com/jmagrippis/techy-cat/pull/15)
+
+[Loading data • Docs • SvelteKit](https://kit.svelte.dev/docs/load)
+
+"The `data` for `+page.svelte` comes from `+page.js`, which in turn receives `data` from `+page.server.js`"
+
+```mermaid
+flowchart LR
+   page.server.js -- data --> page.js -- data --> page.svelte
+
+```
 
 ### Routing
 
 [+page | Routing • Docs • SvelteKit](https://kit.svelte.dev/docs/routing#page)
+
+### Logic / Each blocks
+
+[Tutorial: Logic / Each blocks](https://svelte.dev/tutorial/each-blocks)
 
 ## APIs
 
@@ -56,6 +72,10 @@ export async function load({ fetch } : { fetch:any }) {
 }
 ```
 
+#### Error Handling
+
+[Typescript error "Cannot write file ... because it would overwrite input file."](https://stackoverflow.com/questions/42609768/typescript-error-cannot-write-file-because-it-would-overwrite-input-file)
+
 ### JavaScript Promise, Async, Await
 
 [Promise.resolve() | MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve)
@@ -95,6 +115,26 @@ promiseB.then((value) => {
 
 [Managing fetch promises with actions](https://svelte.dev/repl/5c95e18702764aefa71ff2b4616a6c6e?version=3.20.1)
 
+### JSON
+
+[{JSON} Placeholder: Free fake API for testing and prototyping.](https://jsonplaceholder.typicode.com/)
+
+### HTML & CSS
+
+[HTML Tables | W3 Schools](https://www.w3schools.com/html/html_tables.asp)
+
+### Markdown: Diagrams
+
+[Include diagrams in your Markdown files with Mermaid](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/)
+
+[mermaid: Generation of diagram and flowchart from text in a similar manner as markdown](https://mermaid-js.github.io/mermaid/#/)
+
 ## Tutorials
 
 [Lets build SvelteKit App || Pokemon App](https://tkssharma.com/sveltejs-with-sveltekit-application-pokemon-app/)
+
+[SvelteKit Crash Course Tutorial #8 - Loading Data & SSR](https://www.youtube.com/watch?v=a5OiuEu1Q6M)
+
+[Magically load data with SvelteKit Endpoints](https://www.youtube.com/watch?v=f6prqYlbTE4)
+
+[GitHub: Techy Cat](https://github.com/jmagrippis/techy-cat)

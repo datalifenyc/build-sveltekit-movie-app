@@ -1,40 +1,8 @@
-<script context="module" lang="ts">
-    let current_time = new Date().toLocaleTimeString()
-	export const fetchMovieData = (async () => {
-        console.log(current_time)
-        const api_url = 'https://api.themoviedb.org/3/movie/popular?api_key=***REMOVED***&language=en-US&page=1'
-		const response = await fetch(api_url)
-        const data = await response.json()
-        // console.log(data);
-        console.log(response.ok)
-        if (response.ok) {
-            return {
-                props: {
-                    popular: data.results
-                }
-            };
-        }
-	})
+<script lang="ts">
+    /** @type {import('./$types').PageData} */  
+    export let data: any;
+    
+  
+    console.log(`a: ${data.a}`); // `undefined`, it wasn't passed through in +page.js
+    console.log(`b: ${data.b}`); // `2`
 </script>
-
-<script>
-    let movie_data_promise = fetchMovieData();
-
-    movie_data_promise.then((value) => {
-        console.log(value?.props.popular);
-    });
-
-
-</script>
-
-{#await fetchMovieData()}
-	<p>...waiting</p>
-{:then data}
-    <h1>{ current_time }</h1>
-	<p>{JSON.stringify(data?.props.popular[0].original_title)}</p>
-{:catch error}
-	<p>An error occurred!</p>
-{/await}
-
-
-
