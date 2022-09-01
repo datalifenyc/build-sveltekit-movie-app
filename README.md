@@ -1,4 +1,4 @@
-# SvelteKit For Beginners | Movie App Tutorial
+# Tutorial: SvelteKit For Beginners | Movie App Tutorial
 
 [YouTube: SvelteKit For Beginners | Movie App Tutorial](https://www.youtube.com/watch?v=ydR_M0fw9Xc)
 
@@ -58,6 +58,12 @@ export function load({ data }) {
 
 [+page | Routing • Docs • SvelteKit](https://kit.svelte.dev/docs/routing#page)
 
+[+layout | Routing • Docs • SvelteKit](https://kit.svelte.dev/docs/routing#layout)
+
+Dynamic routes using square brackets:
+
+`src/routes/movie/[id]/+page.svelte`
+
 ### Logic / Each blocks
 
 [Tutorial: Logic / Each blocks](https://svelte.dev/tutorial/each-blocks)
@@ -75,6 +81,14 @@ export function load({ data }) {
 [TMDB: API Documentation > Movies > Get Popular](https://developers.themoviedb.org/3/movies/get-popular-movies)
 
 `https://api.themoviedb.org/3/movie/popular?api_key=<<api_key>>&language=en-US&page=1`
+
+[TMDB: API Documentation > Movies > Get Details](https://developers.themoviedb.org/3/movies/get-movie-details)
+
+`https://api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US`
+
+[TMDB: API Documentation > Movies > Search Movies](https://developers.themoviedb.org/3/search/search-movies)
+
+`https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>&language=en-US&page=1&include_adult=false`
 
 ## Global References
 
@@ -109,6 +123,30 @@ export async function load({ fetch } : { fetch:any }) {
 #### Error Handling
 
 [Typescript error "Cannot write file ... because it would overwrite input file."](https://stackoverflow.com/questions/42609768/typescript-error-cannot-write-file-because-it-would-overwrite-input-file)
+
+`tsconfig.json`
+
+- add `dist` to file
+
+```json
+{
+    "extends": "./.svelte-kit/tsconfig.json",
+    "compilerOptions": {
+        "outDir": "dist", // _new
+        "allowJs": true,
+        "checkJs": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "sourceMap": true,
+        "strict": true
+    },
+    "exclude": [
+        "dist/**/*" // _new
+    ]
+}
+```
 
 ### JavaScript Promise, Async, Await
 
