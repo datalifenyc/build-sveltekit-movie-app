@@ -4,7 +4,7 @@
     export let data: any;
     export let searched_text: any = data.searchedMovie;
     console.clear()
-    console.log(`searched text: ${searched_text[0].title}`);
+    console.log(`first listed movie: ${searched_text[0].title}`);
     // console.log(searched_text);
     //export let searchedMovie: any;
 </script>
